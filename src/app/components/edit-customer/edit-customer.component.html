@@ -1,0 +1,88 @@
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <a href="" routerLink="/customers">
+      <i class="fa fa-chevron-circle-left"></i>
+      Back
+    </a>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        Edit Customer
+      </div>
+      <div class="card-body">
+        <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" autocomplete="off">
+          <div class="form-group">
+            <label for="first-name">
+              <span class="text-danger">* </span>
+              First Name:
+            </label>
+            <input [(ngModel)]="customer.firstName" #cfn="ngModel" [ngClass]="{'is-invalid': cfn.errors && cfn.touched}" name="firstName" required
+              minlength="2" type="text" id="first-name" class="form-control">
+            <div class="invalid-feedback" [hidden]="!cfn.errors?.required">
+              First Name is required
+            </div>
+            <div class="invalid-feedback" [hidden]="!cfn.errors?.minlength">
+              First Name must contain 2 characters min
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="last-name">
+              <span class="text-danger">* </span>
+              Last Name:
+            </label>
+            <input [(ngModel)]="customer.lastName" #cln="ngModel" [ngClass]="{'is-invalid': cln.errors && cln.touched}" name="lastName" required
+              minlength="2" type="text" id="last-name" class="form-control">
+            <div class="invalid-feedback" [hidden]="!cln.errors?.required">
+              Last Name is required
+            </div>
+            <div class="invalid-feedback" [hidden]="!cln.errors?.minlength">
+              Last Name must contain 2 characters min
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">
+              <span class="text-danger">* </span>
+              Email:
+            </label>
+            <input [(ngModel)]="customer.email" #cemail="ngModel" [ngClass]="{'is-invalid': cemail.errors && cemail.touched}" name="email" type="email"
+              id="email" class="form-control" pattern="^(?!.*\.\.)[\w.\-#!$%&'*+\/=?^_`{}|~]{1,35}@[\w.\-]+\.[a-zA-Z]{2,15}$"
+              required>
+            <div class="invalid-feedback" [hidden]="!cemail.errors?.required">
+              A valid email is required
+            </div>
+            <div class="invalid-feedback" [hidden]="!cemail.errors?.pattern">
+              A valid email is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">
+              <span class="text-danger">* </span>
+              Phone:
+            </label>
+            <input [(ngModel)]="customer.phone" #cphone="ngModel" [ngClass]="{'is-invalid': cphone.errors && cphone.touched}" name="phone" type="tel"
+              id="phone" class="form-control" pattern="^\d{9,10}$" required>
+            <div class="invalid-feedback" [hidden]="!cphone.errors?.required">
+              Phone is required
+            </div>
+            <div class="invalid-feedback" [hidden]="!cphone.errors?.pattern">
+              A valid phone number is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" [(ngModel)]="customer.address" name="address" class="form-control">
+          </div>
+          <div class="form-group">
+              <label for="notes">Notes:</label>
+              <textarea class="form-control" rows="5" name="notes" [(ngModel)]="customer.notes" id="notes"></textarea>
+            </div>
+            <input type="submit" name="submit" value="Save changes" class="btn btn-primary btn-block">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

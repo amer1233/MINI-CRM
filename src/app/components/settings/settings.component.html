@@ -1,0 +1,24 @@
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <h2><i class="fa fa-cog"></i> Setting</h2>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>General Settings</h5>
+      </div>
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <mat-checkbox (change)="onCheckDeleteBtn()" [checked]="settings.deleteCustomerBtn">
+              Enable delete customer button
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
